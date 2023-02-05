@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        {% include 'base.html' %}
+        {% block content %}
+        <div>
+            <h1>Download File</h1>
+            <p>{{serial_key}}</p>
+                <table class="table d-flex">
+                    <thead class="d-flex flex-wrap">
+                        <tr class="d-flex flex-row flex-wrap">
+                            <th class="d-flex flex-col" scope="col">Title</th>
+                            <th class="d-flex flex-col" scope="col">Description</th>
+                            <th class="d-flex flex-col" scope="col">File</th>
+                            <th class="d-flex flex-col" scope="col">Edit</th>
+                        </tr>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if file %}
+                            <tr class="d-flex flex-row">
+                                    <td class="d-flex flex-col">{{file.title}}</td>
+                                    <td class="d-flex flex-col">{{file.description}}</td>
+                                    <td class="d-flex flex-col"><a href="{{file.sourceFile.url}}"><i class="fa fa-download"></i></a></td>
+                                    <td class="d-flex flex-col"><a href="{% url 'upload' file.id %}">Edit File</a></td>
+                            </tr>
+                    </tbody>
+                          
+                        
+                </table>
+                        {% else %}
+                                <p>No Files Added</p>
+                        {% endif %}
+                     
+        
+        </div>
+        {% endblock %}
+        
+    </body>
+</html>
